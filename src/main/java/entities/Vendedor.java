@@ -25,4 +25,8 @@ public class Vendedor {
         this.telefone = telefone;
         this.dataNascimento = dataNascimento;
     }
+
+    public Long getID() {
+        return ID;
+    }
 }
