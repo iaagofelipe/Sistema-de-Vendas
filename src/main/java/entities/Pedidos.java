@@ -16,4 +16,16 @@ public class Pedidos {
 
     public Pedidos() {
     }
+
+    public Long getID() {
+        return ID;
+    }
+
+    public List<Produtos> getProdutosList() {
+        return produtosList;
+    }
+
+    public void setProdutosList(List<Produtos> produtosList) {
+        this.produtosList = produtosList;
+    }
 }

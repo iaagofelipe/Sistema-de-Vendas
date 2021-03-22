@@ -25,4 +25,33 @@ public class Vendas {
     public Vendas(Double precoTotal) {
         this.precoTotal = precoTotal;
     }
+
+
+    public Long getID() {
+        return ID;
+    }
+
+    public Double getPrecoTotal() {
+        return precoTotal;
+    }
+
+    public void setPrecoTotal(Double precoTotal) {
+        this.precoTotal = precoTotal;
+    }
+
+    public List<Cliente> getClienteList() {
+        return clienteList;
+    }
+
+    public void setClienteList(List<Cliente> clienteList) {
+        this.clienteList = clienteList;
+    }
+
+    public List<Vendedor> getVendedorList() {
+        return vendedorList;
+    }
+
+    public void setVendedorList(List<Vendedor> vendedorList) {
+        this.vendedorList = vendedorList;
+    }
 }
