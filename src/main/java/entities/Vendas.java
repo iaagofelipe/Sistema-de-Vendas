@@ -12,10 +12,10 @@ public class Vendas {
     private Long ID;
     private Double precoTotal;
 
-    @OneToMany (cascade = CascadeType.ALL, mappedBy = "vendas")
+    @OneToMany (cascade = CascadeType.ALL, mappedBy = "vendas", fetch = FetchType.LAZY)
     private List<Cliente> clienteList;
 
-    @OneToMany (cascade = CascadeType.ALL, mappedBy = "vendas")
+    @OneToMany (cascade = CascadeType.ALL, mappedBy = "vendas", fetch = FetchType.LAZY)
     private List<Vendedor> vendedorList;
 
 

@@ -14,6 +14,9 @@ public class Produtos {
     private String descricaoProduto;
     private Double preco;
 
+    @ManyToOne
+    private Pedidos pedidos;
+
 
 
     public Produtos(String nomeProduto, String descricaoProduto, Double preco) {

@@ -15,6 +15,9 @@ public class Vendedor {
     private String telefone;
     private Date dataNascimento;
 
+    @ManyToOne
+    private Vendas vendas;
+
 
     public Vendedor() {
     }

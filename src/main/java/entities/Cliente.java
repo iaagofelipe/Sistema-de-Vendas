@@ -15,6 +15,9 @@ public class Cliente {
     private String endereco;
     private String telefone;
 
+    @ManyToOne
+    private Vendas vendas;
+
     public Cliente() {
     }
 
