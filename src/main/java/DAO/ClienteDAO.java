@@ -31,7 +31,7 @@ public class ClienteDAO implements DAO<Cliente> {
 
     @Override
     public List<Cliente> getList() {
-        Query query = this.entityManager.createQuery("SELECT c FROM Cliente as c");
+        Query query = this.entityManager.createQuery("SELECT * FROM cliente");
         return query.getResultList();
     }
 
@@ -55,10 +55,10 @@ public class ClienteDAO implements DAO<Cliente> {
     }
 
     @Override
-    public Cliente delete(Long id) {
+    public Cliente delete(Long ID) {
         Cliente cliente = null;
         try {
-            cliente = entityManager.find(Cliente.class, id);
+            cliente = entityManager.find(Cliente.class, ID);
             this.entityManager.getTransaction().begin();
             this.entityManager.remove(cliente);
             this.entityManager.getTransaction().commit();
@@ -71,10 +71,10 @@ public class ClienteDAO implements DAO<Cliente> {
     }
 
     @Override
-    public Cliente findById(Long id) {
+    public Cliente findById(Long ID) {
         Cliente cliente = null;
         try {
-            cliente = entityManager.find(Cliente.class, id);
+            cliente = entityManager.find(Cliente.class, ID);
         } catch (Exception e) {
             throw new RuntimeException("Erro ao buscar por id" + e);
         }
