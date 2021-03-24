@@ -27,7 +27,7 @@ public class ProdutosDAO implements DAO<Produtos>{
 
     @Override
     public List<Produtos> getList() {
-        Query query = this.entityManager.createQuery("SELECT * FROM produtos");
+        Query query = this.entityManager.createQuery("SELECT p FROM Produtos as p");
         return query.getResultList();
     }
 
