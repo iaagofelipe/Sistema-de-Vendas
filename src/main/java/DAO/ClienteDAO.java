@@ -31,7 +31,7 @@ public class ClienteDAO implements DAO<Cliente> {
 
     @Override
     public List<Cliente> getList() {
-        Query query = this.entityManager.createQuery("SELECT * FROM cliente");
+        Query query = this.entityManager.createQuery("SELECT c FROM Cliente as c");
         return query.getResultList();
     }
 
