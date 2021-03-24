@@ -28,6 +28,18 @@ public class Produtos {
     public Produtos() {
     }
 
+    public void setID(Long ID) {
+        this.ID = ID;
+    }
+
+    public Pedidos getPedidos() {
+        return pedidos;
+    }
+
+    public void setPedidos(Pedidos pedidos) {
+        this.pedidos = pedidos;
+    }
+
     public Long getID() {
         return ID;
     }

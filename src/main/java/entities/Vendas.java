@@ -27,6 +27,10 @@ public class Vendas {
     }
 
 
+    public void setID(Long ID) {
+        this.ID = ID;
+    }
+
     public Long getID() {
         return ID;
     }

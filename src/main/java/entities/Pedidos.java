@@ -21,6 +21,10 @@ public class Pedidos {
         return ID;
     }
 
+    public void setID(Long ID) {
+        this.ID = ID;
+    }
+
     public List<Produtos> getProdutosList() {
         return produtosList;
     }

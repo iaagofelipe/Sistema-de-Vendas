@@ -4,3 +4,9 @@
 .idea/vcs.xml
 
 .idea/
+
+lib/
+
+target/maven-status/maven-compiler-plugin/compile/default-compile/
+
+*.iml

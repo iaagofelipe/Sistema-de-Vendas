@@ -1,7 +1,6 @@
 package DAO;
 
 import conexao.ConnectionFactory;
-import entities.Cliente;
 import entities.Vendedor;
 
 import javax.persistence.EntityManager;
@@ -11,6 +10,7 @@ import java.util.List;
 public class VendedorDAO implements DAO<Vendedor> {
 
     private final EntityManager entityManager = new ConnectionFactory().getConnection();
+    public Vendedor vendedorUP = null;
 
     @Override
     public Vendedor save(Vendedor vendedor) {
@@ -18,10 +18,11 @@ public class VendedorDAO implements DAO<Vendedor> {
             this.entityManager.getTransaction().begin();
             this.entityManager.persist(vendedor);
             this.entityManager.getTransaction().commit();
-        } catch (Exception error) {
-            this.entityManager.getTransaction().rollback();
-        } finally {
             this.entityManager.close();
+        } catch (Exception e) {
+            this.entityManager.getTransaction().rollback();
+            this.entityManager.close();
+            throw new RuntimeException("não foi possivel salvar" + e);
         }
         return vendedor;
     }
@@ -34,47 +35,46 @@ public class VendedorDAO implements DAO<Vendedor> {
 
     @Override
     public Vendedor update(Vendedor vendedor) {
-        Vendedor vendedorUp = null;
         try {
             this.entityManager.getTransaction().begin();
             if (vendedor.getID() == null) {
                 this.entityManager.persist(vendedor);
             } else {
-                vendedorUp = this.entityManager.merge(vendedor);
+                vendedorUP = this.entityManager.merge(vendedor);
             }
             this.entityManager.getTransaction().commit();
-        } catch (Exception exception) {
-            this.entityManager.getTransaction().rollback();
-        } finally {
             this.entityManager.close();
+        } catch (Exception e) {
+            this.entityManager.getTransaction().rollback();
+            this.entityManager.close();
+            throw new RuntimeException("não foi possível atualizar");
         }
-        return vendedorUp;
+        return vendedorUP;
     }
 
     @Override
     public Vendedor delete(Long id) {
-        Vendedor vendedor = null;
         try {
-            vendedor = entityManager.find(Vendedor.class, id);
+            vendedorUP = entityManager.find(Vendedor.class, id);
             this.entityManager.getTransaction().begin();
-            this.entityManager.remove(vendedor);
+            this.entityManager.remove(vendedorUP);
             this.entityManager.getTransaction().commit();
+            this.entityManager.close();
         } catch (Exception e) {
             this.entityManager.getTransaction().rollback();
-        } finally {
             this.entityManager.close();
+            throw new RuntimeException("não foi possível remover" + e);
         }
-        return vendedor;
+        return vendedorUP;
     }
 
     @Override
     public Vendedor findById(Long id) {
-        Vendedor vendedor = null;
         try {
-            vendedor = entityManager.find(Vendedor.class, id);
+            vendedorUP = entityManager.find(Vendedor.class, id);
         } catch (Exception e) {
             throw new RuntimeException("Erro ao buscar por id" + e);
         }
-        return vendedor;
+        return vendedorUP;
     }
 }

@@ -10,6 +10,7 @@ import java.util.List;
 public class ProdutosDAO implements DAO<Produtos>{
 
     private final EntityManager entityManager = new ConnectionFactory().getConnection();
+    public Produtos produtosUP;
 
     @Override
     public Produtos save(Produtos produtos) {
@@ -17,10 +18,11 @@ public class ProdutosDAO implements DAO<Produtos>{
             this.entityManager.getTransaction().begin();
             this.entityManager.persist(produtos);
             this.entityManager.getTransaction().commit();
-        } catch (Exception error) {
-            this.entityManager.getTransaction().rollback();
-        } finally {
             this.entityManager.close();
+        } catch (Exception e) {
+            this.entityManager.getTransaction().rollback();
+            this.entityManager.close();
+            throw new RuntimeException("não foi possivel salvar" + e);
         }
         return produtos;
     }
@@ -33,47 +35,46 @@ public class ProdutosDAO implements DAO<Produtos>{
 
     @Override
     public Produtos update(Produtos produtos) {
-        Produtos produtosUp = null;
         try {
             this.entityManager.getTransaction().begin();
             if (produtos.getID() == null) {
                 this.entityManager.persist(produtos);
             } else {
-                produtosUp = this.entityManager.merge(produtos);
+                produtosUP = this.entityManager.merge(produtos);
             }
             this.entityManager.getTransaction().commit();
-        } catch (Exception exception) {
-            this.entityManager.getTransaction().rollback();
-        } finally {
             this.entityManager.close();
+        } catch (Exception e) {
+            this.entityManager.getTransaction().rollback();
+            this.entityManager.close();
+            throw new RuntimeException("não foi possível atualizar" + e);
         }
-        return produtosUp;
+        return produtosUP;
     }
 
     @Override
     public Produtos delete(Long ID) {
-        Produtos produtos = null;
         try {
-            produtos = entityManager.find(Produtos.class, ID);
+            produtosUP = entityManager.find(Produtos.class, ID);
             this.entityManager.getTransaction().begin();
-            this.entityManager.remove(produtos);
+            this.entityManager.remove(produtosUP);
             this.entityManager.getTransaction().commit();
+            this.entityManager.close();
         } catch (Exception e) {
             this.entityManager.getTransaction().rollback();
-        } finally {
             this.entityManager.close();
+            throw new RuntimeException("não foi possível remover" + e);
         }
-        return produtos;
+        return produtosUP;
     }
 
     @Override
     public Produtos findById(Long ID) {
-        Produtos produtos = null;
         try {
-            produtos = entityManager.find(Produtos.class, ID);
+            produtosUP = entityManager.find(Produtos.class, ID);
         } catch (Exception e) {
             throw new RuntimeException("Erro ao buscar por id" + e);
         }
-        return produtos;
+        return produtosUP;
     }
 }

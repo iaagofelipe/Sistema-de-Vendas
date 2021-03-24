@@ -8,9 +8,9 @@ public class SistemaTeste {
         System.out.println("Iniciando...");
 
         Cliente cliente = new Cliente();
-        cliente.setNome("Iago");
-        cliente.setCpf("11111111111");
-        cliente.setTelefone("85999999999");
+        cliente.setNome("Silva");
+        cliente.setCpf("55532111111");
+        cliente.setTelefone("85976549239");
         cliente.setEndereco("Rua das caixas daguas");
 
         ClienteDAO clienteDAO = new ClienteDAO();

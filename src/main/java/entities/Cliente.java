@@ -32,6 +32,18 @@ public class Cliente {
         return ID;
     }
 
+    public void setID(Long ID) {
+        this.ID = ID;
+    }
+
+    public Vendas getVendas() {
+        return vendas;
+    }
+
+    public void setVendas(Vendas vendas) {
+        this.vendas = vendas;
+    }
+
     public String getNome() {
         return nome;
     }
