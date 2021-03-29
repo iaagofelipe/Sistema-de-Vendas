@@ -1,0 +1,12 @@
+CLIENTES:
+	- FK vendas_id; OK
+VENDEDORES:
+	-vendas_id; ok
+PRODUTOS:
+	- pedidos_id; ok
+PEDIDOS:
+	- falta quantida	de e FK do produto;
+VENDAS :
+	- falta FKs
+
+FALTA TABELA PEDIDO_VENDAS

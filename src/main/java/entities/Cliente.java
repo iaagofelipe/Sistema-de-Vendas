@@ -4,7 +4,7 @@ package entities;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "cliente")
+@Table(name = "clientes")
 public class Cliente {
 
     @Id
@@ -15,8 +15,8 @@ public class Cliente {
     private String endereco;
     private String telefone;
 
-    @ManyToOne
-    private Vendas vendas;
+//    @ManyToOne
+//    private Vendas vendas;
 
     public Cliente() {
     }
@@ -36,13 +36,13 @@ public class Cliente {
         this.ID = ID;
     }
 
-    public Vendas getVendas() {
-        return vendas;
-    }
-
-    public void setVendas(Vendas vendas) {
-        this.vendas = vendas;
-    }
+//    public Vendas getVendas() {
+//        return vendas;
+//    }
+//
+//    public void setVendas(Vendas vendas) {
+//        this.vendas = vendas;
+//    }
 
     public String getNome() {
         return nome;
