@@ -14,9 +14,6 @@ public class Pedidos {
 	@ManyToOne
 	private Produtos produtos;
 
-	//    @OneToMany (cascade = CascadeType.ALL, mappedBy = "pedidos")
-	//    private List<Produtos> produtosList;
-
 	public Produtos getProdutos() {
 		return produtos;
 	}
@@ -35,14 +32,6 @@ public class Pedidos {
 	public void setID(Long ID) {
 		this.ID = ID;
 	}
-
-//	public List<Produtos> getProdutosList() {
-//		return produtosList;
-//	}
-//
-//	public void setProdutosList(List<Produtos> produtosList) {
-//		this.produtosList = produtosList;
-//	}
 
 	public Integer getQuantidade() {
 		return quantidade;

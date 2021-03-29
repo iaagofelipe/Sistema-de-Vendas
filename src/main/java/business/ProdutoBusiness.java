@@ -22,4 +22,10 @@ public class ProdutoBusiness implements Business<Produtos>{
 		
 	}
 
+	@Override
+	public void menu() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

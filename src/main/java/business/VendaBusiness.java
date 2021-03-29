@@ -22,4 +22,10 @@ public class VendaBusiness implements Business<Vendas>{
 		
 	}
 
+	@Override
+	public void menu() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }
