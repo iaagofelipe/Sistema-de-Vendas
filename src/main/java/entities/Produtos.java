@@ -14,11 +14,6 @@ public class Produtos {
     private String descricaoProduto;
     private Double preco;
 
-    @ManyToOne
-    private Pedidos pedidos;
-
-
-
     public Produtos(String nomeProduto, String descricaoProduto, Double preco) {
         this.nomeProduto = nomeProduto;
         this.descricaoProduto = descricaoProduto;
@@ -32,13 +27,13 @@ public class Produtos {
         this.ID = ID;
     }
 
-    public Pedidos getPedidos() {
-        return pedidos;
-    }
-
-    public void setPedidos(Pedidos pedidos) {
-        this.pedidos = pedidos;
-    }
+//    public Pedidos getPedidos() {
+//        return pedidos;
+//    }
+//
+//    public void setPedidos(Pedidos pedidos) {
+//        this.pedidos = pedidos;
+//    }
 
     public Long getID() {
         return ID;

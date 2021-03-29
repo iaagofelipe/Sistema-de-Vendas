@@ -4,75 +4,75 @@ package entities;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "cliente")
+@Table(name = "clientes")
 public class Cliente {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long ID;
-    private String nome;
-    private String cpf;
-    private String endereco;
-    private String telefone;
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Long ID;
+	private String nome;
+	private String cpf;
+	private String endereco;
+	private String telefone;
 
-    @ManyToOne
-    private Vendas vendas;
+	public Cliente() {
+	}
 
-    public Cliente() {
-    }
+	public Cliente(String nome, String cpf, String endereco, String telefone) {
+		this.nome = nome;
+		this.cpf = cpf;
+		this.endereco = endereco;
+		this.telefone = telefone;
+	}
 
-    public Cliente(String nome, String cpf, String endereco, String telefone) {
-        this.nome = nome;
-        this.cpf = cpf;
-        this.endereco = endereco;
-        this.telefone = telefone;
-    }
+	public Long getID() {
+		return ID;
+	}
 
-    public Long getID() {
-        return ID;
-    }
+	public void setID(Long ID) {
+		this.ID = ID;
+	}
 
-    public void setID(Long ID) {
-        this.ID = ID;
-    }
+	public String getNome() {
+		return nome;
+	}
 
-    public Vendas getVendas() {
-        return vendas;
-    }
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
 
-    public void setVendas(Vendas vendas) {
-        this.vendas = vendas;
-    }
+	public String getCpf() {
+		return cpf;
+	}
 
-    public String getNome() {
-        return nome;
-    }
+	public void setCpf(String cpf) {
+		this.cpf = cpf;
+	}
 
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
+	public String getEndereco() {
+		return endereco;
+	}
 
-    public String getCpf() {
-        return cpf;
-    }
+	public void setEndereco(String endereco) {
+		this.endereco = endereco;
+	}
 
-    public void setCpf(String cpf) {
-        this.cpf = cpf;
-    }
+	public String getTelefone() {
+		return telefone;
+	}
 
-    public String getEndereco() {
-        return endereco;
-    }
+	public void setTelefone(String telefone) {
+		this.telefone = telefone;
+	}
 
-    public void setEndereco(String endereco) {
-        this.endereco = endereco;
-    }
+	@Override
+	public String toString() {
+		System.out.println("");
+		return  "Código: " + this.ID.toString()+
+				"\nNome: " + this.nome + 
+				"\nCPF: "+ this.cpf +
+				"\nEndereço: " + this.endereco +
+				"\nTelefone: " + this.telefone;
 
-    public String getTelefone() {
-        return telefone;
-    }
-
-    public void setTelefone(String telefone) {
-        this.telefone = telefone;
-    }
+	}
 }

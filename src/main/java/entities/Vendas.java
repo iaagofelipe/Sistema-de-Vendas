@@ -11,13 +11,12 @@ public class Vendas {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long ID;
     private Double precoTotal;
-
-    @OneToMany (cascade = CascadeType.ALL, mappedBy = "vendas", fetch = FetchType.LAZY)
-    private List<Cliente> clienteList;
-
-    @OneToMany (cascade = CascadeType.ALL, mappedBy = "vendas", fetch = FetchType.LAZY)
-    private List<Vendedor> vendedorList;
-
+    
+    @ManyToOne
+    private Cliente cliente;
+    
+    @ManyToOne
+    private Vendedor vendedores;
 
     public Vendas() {
     }
@@ -43,19 +42,4 @@ public class Vendas {
         this.precoTotal = precoTotal;
     }
 
-    public List<Cliente> getClienteList() {
-        return clienteList;
-    }
-
-    public void setClienteList(List<Cliente> clienteList) {
-        this.clienteList = clienteList;
-    }
-
-    public List<Vendedor> getVendedorList() {
-        return vendedorList;
-    }
-
-    public void setVendedorList(List<Vendedor> vendedorList) {
-        this.vendedorList = vendedorList;
-    }
 }

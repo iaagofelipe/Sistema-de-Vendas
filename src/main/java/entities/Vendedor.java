@@ -5,7 +5,7 @@ import javax.persistence.*;
 import java.util.Date;
 
 @Entity
-@Table(name = "vendedor")
+@Table(name = "vendedores")
 public class Vendedor {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -14,10 +14,6 @@ public class Vendedor {
     private String cpf;
     private String telefone;
     private Date dataNascimento;
-
-    @ManyToOne
-    private Vendas vendas;
-
 
     public Vendedor() {
     }
@@ -35,14 +31,6 @@ public class Vendedor {
 
     public void setID(Long ID) {
         this.ID = ID;
-    }
-
-    public Vendas getVendas() {
-        return vendas;
-    }
-
-    public void setVendas(Vendas vendas) {
-        this.vendas = vendas;
     }
 
     public String getNome() {
