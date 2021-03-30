@@ -26,4 +26,11 @@ public class Pedidos {
 	public Long getID() {
 		return ID;
 	}
+
+	@Override
+	public String toString() {
+		return "Pedidos: " +
+				"\nCódigo do pedido: " + ID.toString() +
+				"\nNome do pedido: " + produtos.getNomeProduto();
+	}
 }

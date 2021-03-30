@@ -2,11 +2,10 @@ package entities;
 
 
 import javax.persistence.*;
-import java.util.List;
 
 @Entity
 @Table(name = "vendas")
-public class Vendas {
+public class Venda {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long ID;
@@ -16,12 +15,12 @@ public class Vendas {
     private Cliente cliente;
     
     @ManyToOne
-    private Vendedor vendedores;
+    private Vendedor vendedor;
 
-    public Vendas() {
+    public Venda() {
     }
 
-    public Vendas(Double precoTotal) {
+    public Venda(Double precoTotal) {
         this.precoTotal = precoTotal;
     }
 
@@ -42,4 +41,19 @@ public class Vendas {
         this.precoTotal = precoTotal;
     }
 
+    public Cliente getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
+    }
+
+    public Vendedor getVendedor() {
+        return vendedor;
+    }
+
+    public void setVendedor(Vendedor vendedores) {
+        this.vendedor = vendedores;
+    }
 }

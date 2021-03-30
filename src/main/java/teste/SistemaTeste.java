@@ -1,22 +1,14 @@
 package teste;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.util.Date;
-import java.util.Scanner;
-
-import DAO.ClienteDAO;
 import DAO.PedidoDAO;
-import DAO.ProdutosDAO;
 import DAO.VendedorDAO;
 import business.ClienteBusiness;
+import business.PedidoBusiness;
 import business.ProdutoBusiness;
 import business.VendedorBusiness;
-import entities.Cliente;
-import entities.Pedidos;
-import entities.Produtos;
-import entities.Vendedor;
+
+import java.text.ParseException;
+import java.util.Scanner;
 
 public class SistemaTeste {
 	public static VendedorDAO vendedorDAO = new VendedorDAO();
@@ -24,6 +16,7 @@ public class SistemaTeste {
 	public static ClienteBusiness clienteBusiness = new ClienteBusiness();
 	public static ProdutoBusiness produtoBusiness = new ProdutoBusiness();
 	public static VendedorBusiness vendedorBusiness = new VendedorBusiness();
+	public static PedidoBusiness pedidoBusiness = new PedidoBusiness();
 	public static Scanner scan  = new Scanner(System.in);
 
 	public static void main(String[] args) throws ParseException {
@@ -34,7 +27,8 @@ public class SistemaTeste {
 		System.out.println("2- Produtos");
 		System.out.println("3- Clientes");
 		System.out.println("4- Vendedores");
-		System.out.println("Qual módulo deseja usar?");
+		System.out.println("5- Pedidos");
+		System.out.println("Digite o módulo que deseja acessar: ");
 		int op = scan.nextInt();
 
 		switch(op) {
@@ -47,6 +41,9 @@ public class SistemaTeste {
 			break;
 		case 4: 
 			vendedorBusiness.menu();
+			break;
+		case 5:
+			pedidoBusiness.menu();
 			break;
 		default:
 			System.out.println("Opção Inválida");

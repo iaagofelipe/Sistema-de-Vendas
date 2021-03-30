@@ -1,9 +1,9 @@
 package business;
 
-import java.util.Scanner;
-
 import DAO.ProdutosDAO;
 import entities.Produtos;
+
+import java.util.Scanner;
 
 public class ProdutoBusiness implements Business<Produtos>{
 	
@@ -89,10 +89,11 @@ public class ProdutoBusiness implements Business<Produtos>{
 		scan.nextLine();
 		String codigo = scan.nextLine();
 
-		if(codigo != null && codigo != "")
+		if(codigo != null && codigo != "") {
 			produtosDAO.delete(Long.parseLong(codigo));
-		else
-			System.out.println("Código inválido!");		
+		} else {
+			System.out.println("Código inválido!");
+		}
 	}
 
 	@Override

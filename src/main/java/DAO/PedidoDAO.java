@@ -1,13 +1,11 @@
 package DAO;
 
-import java.util.List;
+import conexao.ConnectionFactory;
+import entities.Pedidos;
 
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
-
-import conexao.ConnectionFactory;
-import entities.Pedidos;
-import entities.Vendedor;
+import java.util.List;
 
 public class PedidoDAO implements DAO<Pedidos> {
 	private final EntityManager entityManager = new ConnectionFactory().getConnection();
@@ -29,7 +27,7 @@ public class PedidoDAO implements DAO<Pedidos> {
 	}
 
 	@Override
-	public List getList() {
+	public List<Pedidos> getList() {
 		 Query query = this.entityManager.createQuery("SELECT p FROM Pedidos as p");
 	     return query.getResultList();
 	}

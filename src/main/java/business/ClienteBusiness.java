@@ -1,10 +1,10 @@
 package business;
 
-import java.util.Scanner;
-
 import DAO.ClienteDAO;
-import antlr.collections.List;
 import entities.Cliente;
+
+import java.util.List;
+import java.util.Scanner;
 
 public class ClienteBusiness implements Business<Cliente>{
 
@@ -123,9 +123,7 @@ public class ClienteBusiness implements Business<Cliente>{
 			this.salvar();
 			break;
 		case 2:
-			for(Cliente cliente : clienteDAO.getList()) {
-				System.out.println(cliente.toString());
-			}
+			imprimirCliente();
 			break;
 		case 3:
 			this.editar();
@@ -137,6 +135,21 @@ public class ClienteBusiness implements Business<Cliente>{
 			break;
 		}
 
+	}
+
+	public void imprimirCliente() {
+		try {
+			List<Cliente> clienteList = clienteDAO.getList();
+			if (clienteList != null && !clienteList.isEmpty()) {
+				for (Cliente clientes : clienteList) {
+					System.out.println(clientes);
+				}
+			} else {
+				System.out.println("Não há clientes cadastrados");
+			}
+		} catch (Exception e) {
+			throw new RuntimeException("Não foi possível imprimir a lista de clientes.");
+		}
 	}
 
 }

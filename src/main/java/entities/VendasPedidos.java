@@ -9,14 +9,34 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "vendas_pedidos")
-public class Vendas_Pedidos {
+public class VendasPedidos {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long ID;
     
     @ManyToOne
-    private Vendas vendas;
+    private Venda venda;
     
     @ManyToOne
     private Pedidos pedidos;
+
+    public Long getID() {
+        return ID;
+    }
+
+    public Venda getVenda() {
+        return venda;
+    }
+
+    public void setVenda(Venda venda) {
+        this.venda = venda;
+    }
+
+    public Pedidos getPedidos() {
+        return pedidos;
+    }
+
+    public void setPedidos(Pedidos pedidos) {
+        this.pedidos = pedidos;
+    }
 }

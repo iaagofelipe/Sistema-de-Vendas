@@ -1,14 +1,14 @@
 package business;
 
+import DAO.VendedorDAO;
+import entities.Vendedor;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.Date;
+import java.util.List;
 import java.util.Scanner;
-
-import DAO.VendedorDAO;
-import entities.Cliente;
-import entities.Vendedor;
 
 public class VendedorBusiness implements Business<Vendedor>{
 	
@@ -129,23 +129,36 @@ public class VendedorBusiness implements Business<Vendedor>{
 
 		int op = scan.nextInt();
 
-		switch(op) {
-		case 1:
-			this.salvar();
-			break;
-		case 2:
-			for(Vendedor vendedor : vendedorDAO.getList()) {
-				System.out.println(vendedor.toString());
+		switch (op) {
+			case 1:
+				salvar();
+				break;
+			case 2:
+				imprimirVendedores();
+				break;
+			case 3:
+				editar();
+				break;
+			case 4:
+				excluir();
+				break;
+			default:
+				break;
+		}
+	}
+
+	public void imprimirVendedores() {
+		try {
+			List<Vendedor> vendedoresList = vendedorDAO.getList();
+			if (vendedoresList != null && !vendedoresList.isEmpty()) {
+				for (Vendedor vendedores : vendedoresList) {
+					System.out.println(vendedores);
+				}
+			} else {
+				System.out.println("Não há vendedores cadastrados");
 			}
-			break;
-		case 3:
-			this.editar();
-			break;
-		case 4:
-			this.excluir();
-			break;
-		default:
-			break;
+		} catch (Exception e) {
+			throw new RuntimeException("Não foi possível imprimir a lista de vendedores.");
 		}
 	}
 	
