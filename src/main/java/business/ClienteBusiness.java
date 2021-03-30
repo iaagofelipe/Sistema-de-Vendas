@@ -29,7 +29,7 @@ public class ClienteBusiness implements Business<Cliente>{
 
 			clienteDAO.save(cliente);
 		} catch(Exception e) {
-			throw new RuntimeException("Não foi possivel salvar um produto." + e);
+			throw new RuntimeException("Não foi possivel salvar um cliente." + e);
 		}
 
 	}

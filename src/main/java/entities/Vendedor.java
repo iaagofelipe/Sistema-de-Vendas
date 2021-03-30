@@ -64,4 +64,15 @@ public class Vendedor {
     public void setDataNascimento(Date dataNascimento) {
         this.dataNascimento = dataNascimento;
     }
+    
+    @Override
+	public String toString() {
+		System.out.println("");
+		return  "Código: " + this.ID.toString()+
+				"\nNome: " + this.nome + 
+				"\nCPF: "+ this.cpf +
+				"\nData de Nascimento: " + this.dataNascimento +
+				"\nTelefone: " + this.telefone;
+
+	}
 }

@@ -28,7 +28,7 @@ public class VendedorDAO implements DAO<Vendedor> {
     }
 
     @Override
-    public List getList() {
+    public List<Vendedor> getList() {
         Query query = this.entityManager.createQuery("SELECT v FROM Vendedor as v");
         return query.getResultList();
     }
