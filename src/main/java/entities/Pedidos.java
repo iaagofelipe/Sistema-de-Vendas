@@ -1,7 +1,6 @@
 package entities;
 
 import javax.persistence.*;
-import java.util.List;
 
 @Entity
 @Table(name = "pedidos")
@@ -9,7 +8,6 @@ public class Pedidos {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long ID;
-	private Integer quantidade;
 
 	@ManyToOne
 	private Produtos produtos;
@@ -28,17 +26,4 @@ public class Pedidos {
 	public Long getID() {
 		return ID;
 	}
-
-	public void setID(Long ID) {
-		this.ID = ID;
-	}
-
-	public Integer getQuantidade() {
-		return quantidade;
-	}
-
-	public void setQuantidade(Integer quantidade) {
-		this.quantidade = quantidade;
-	}
-
 }
