@@ -27,14 +27,6 @@ public class Produtos {
         this.ID = ID;
     }
 
-//    public Pedidos getPedidos() {
-//        return pedidos;
-//    }
-//
-//    public void setPedidos(Pedidos pedidos) {
-//        this.pedidos = pedidos;
-//    }
-
     public Long getID() {
         return ID;
     }
@@ -62,5 +54,15 @@ public class Produtos {
     public void setPreco(Double preco) {
         this.preco = preco;
     }
+    
+    @Override
+	public String toString() {
+		System.out.println("");
+		return  "Código: " + this.ID.toString()+
+				"\nNome: " + this.nomeProduto + 
+				"\nDescrição: "+ this.descricaoProduto +
+				"\nPreço: " + this.preco;
+
+	}
 }
 

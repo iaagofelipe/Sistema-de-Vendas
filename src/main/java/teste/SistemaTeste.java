@@ -7,16 +7,17 @@ import DAO.PedidoDAO;
 import DAO.ProdutosDAO;
 import DAO.VendedorDAO;
 import business.ClienteBusiness;
+import business.ProdutoBusiness;
 import entities.Cliente;
 import entities.Pedidos;
 import entities.Produtos;
 import entities.Vendedor;
 
 public class SistemaTeste {
-	public static ProdutosDAO produtosDAO = new ProdutosDAO();
 	public static VendedorDAO vendedorDAO = new VendedorDAO();
 	public static PedidoDAO pedidoDAO = new PedidoDAO();
 	public static ClienteBusiness clienteBusiness = new ClienteBusiness();
+	public static ProdutoBusiness produtoBusiness = new ProdutoBusiness();
 	public static Scanner scan  = new Scanner(System.in);
 	
 	public static void main(String[] args) {
@@ -31,7 +32,9 @@ public class SistemaTeste {
 		
 		switch(op) {
 		case 1: break;
-		case 2: break;
+		case 2: 
+			produtoBusiness.menu();
+			break;
 		case 3:
 			clienteBusiness.menu();
 			break;
