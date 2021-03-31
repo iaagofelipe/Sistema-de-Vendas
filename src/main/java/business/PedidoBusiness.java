@@ -10,7 +10,6 @@ import java.util.Scanner;
 
 public class PedidoBusiness {
 	public static Scanner scan = new Scanner(System.in);
-	public static Produtos produtos = new Produtos();
 	public static Pedidos pedidos = new Pedidos();
 	public static PedidoDAO pedidoDAO = new PedidoDAO();
 	public static ProdutosDAO produtosDAO = new ProdutosDAO();
@@ -105,7 +104,7 @@ public class PedidoBusiness {
 		scan.nextLine();
 		String codigo = scan.nextLine();
 
-		if (codigo != null && codigo != "") {
+		if (codigo != null && !codigo.isEmpty()) {
 			pedidoDAO.delete(Long.parseLong(codigo));
 			System.out.println("Deletado com sucesso!");
 		} else {
@@ -138,5 +137,10 @@ public class PedidoBusiness {
 				System.out.println("Opção inválida!");
 				break;
 		}
+	}
+
+	public void closeDAOConnection() {
+		produtosDAO.close();
+		pedidoDAO.close();
 	}
 }

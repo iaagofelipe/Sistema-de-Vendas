@@ -50,6 +50,8 @@ public class VendaBusiness{
 				vendasPedidos.setPedidos(pedidoFeito);
 				vendaDAO.save(venda);
 			}
+		} catch (Exception e) {
+			System.out.println("Não foi possivel registrar a venda!");
 		}
 	}
 

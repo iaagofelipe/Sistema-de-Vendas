@@ -89,7 +89,7 @@ public class ProdutoBusiness implements Business<Produtos>{
 		scan.nextLine();
 		String codigo = scan.nextLine();
 
-		if(codigo != null && codigo != "") {
+		if(codigo != null && !codigo.isEmpty()) {
 			produtosDAO.delete(Long.parseLong(codigo));
 		} else {
 			System.out.println("Código inválido!");
@@ -124,6 +124,10 @@ public class ProdutoBusiness implements Business<Produtos>{
 		default:
 			break;
 		}		
+	}
+
+	public void closeDAOConnection() {
+		produtosDAO.close();
 	}
 
 }

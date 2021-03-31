@@ -113,7 +113,7 @@ public class VendedorBusiness implements Business<Vendedor>{
 		scan.nextLine();
 		String codigo = scan.nextLine();
 
-		if(codigo != null && codigo != "")
+		if(codigo != null && !codigo.isEmpty())
 			vendedorDAO.delete(Long.parseLong(codigo));
 		else
 			System.out.println("Código inválido!");
@@ -169,6 +169,10 @@ public class VendedorBusiness implements Business<Vendedor>{
 				Integer.parseInt(dataP.substring(3,5))	, 
 				Integer.parseInt(dataP.substring(0,2)));
 		return sdf.parse(data.toString());
+	}
+
+	public void closeDAOConnection() {
+		vendedorDAO.close();
 	}
 
 }

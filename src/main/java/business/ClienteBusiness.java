@@ -101,7 +101,7 @@ public class ClienteBusiness implements Business<Cliente>{
 		scan.nextLine();
 		String codigo = scan.nextLine();
 
-		if(codigo != null && codigo != "")
+		if(codigo != null && !codigo.isEmpty())
 			clienteDAO.delete(Long.parseLong(codigo));
 		else
 			System.out.println("Código inválido!");
@@ -150,6 +150,10 @@ public class ClienteBusiness implements Business<Cliente>{
 		} catch (Exception e) {
 			throw new RuntimeException("Não foi possível imprimir a lista de clientes.");
 		}
+	}
+
+	public void closeDAOConnection() {
+		clienteDAO.close();
 	}
 
 }
