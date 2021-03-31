@@ -19,7 +19,6 @@ public class ClienteDAO implements DAO<Cliente> {
             this.entityManager.getTransaction().begin();
             this.entityManager.persist(cliente);
             this.entityManager.getTransaction().commit();
-            this.entityManager.close();
         } catch (Exception e) {
             this.entityManager.getTransaction().rollback();
             this.entityManager.close();
@@ -44,7 +43,6 @@ public class ClienteDAO implements DAO<Cliente> {
                 clienteUP = this.entityManager.merge(cliente);
             }
             this.entityManager.getTransaction().commit();
-            this.entityManager.close();
         } catch (Exception e) {
             this.entityManager.getTransaction().rollback();
             this.entityManager.close();
@@ -60,7 +58,6 @@ public class ClienteDAO implements DAO<Cliente> {
             this.entityManager.getTransaction().begin();
             this.entityManager.remove(clienteUP);
             this.entityManager.getTransaction().commit();
-            this.entityManager.close();
         } catch (Exception e) {
             this.entityManager.getTransaction().rollback();
             this.entityManager.close();
@@ -77,5 +74,9 @@ public class ClienteDAO implements DAO<Cliente> {
             throw new RuntimeException("Erro ao buscar por id" + e);
         }
         return clienteUP;
+    }
+
+    public void close() {
+        entityManager.close();
     }
 }

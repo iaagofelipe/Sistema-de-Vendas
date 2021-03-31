@@ -17,7 +17,6 @@ public class PedidoDAO implements DAO<Pedidos> {
 	            this.entityManager.getTransaction().begin();
 	            this.entityManager.persist(pedido);
 	            this.entityManager.getTransaction().commit();
-	            this.entityManager.close();
 	        } catch (Exception e) {
 	            this.entityManager.getTransaction().rollback();
 	            this.entityManager.close();
@@ -42,7 +41,6 @@ public class PedidoDAO implements DAO<Pedidos> {
 	            	pedidoUP = this.entityManager.merge(pedido);
 	            }
 	            this.entityManager.getTransaction().commit();
-	            this.entityManager.close();
 	        } catch (Exception e) {
 	            this.entityManager.getTransaction().rollback();
 	            this.entityManager.close();
@@ -58,7 +56,6 @@ public class PedidoDAO implements DAO<Pedidos> {
             this.entityManager.getTransaction().begin();
             this.entityManager.remove(pedidoUP);
             this.entityManager.getTransaction().commit();
-            this.entityManager.close();
         } catch (Exception e) {
             this.entityManager.getTransaction().rollback();
             this.entityManager.close();
@@ -75,6 +72,10 @@ public class PedidoDAO implements DAO<Pedidos> {
             throw new RuntimeException("Erro ao buscar por id" + e);
         }
         return pedidoUP;
+	}
+
+	public void close() {
+		entityManager.close();
 	}
 
 }

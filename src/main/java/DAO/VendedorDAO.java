@@ -18,7 +18,6 @@ public class VendedorDAO implements DAO<Vendedor> {
             this.entityManager.getTransaction().begin();
             this.entityManager.persist(vendedor);
             this.entityManager.getTransaction().commit();
-            this.entityManager.close();
         } catch (Exception e) {
             this.entityManager.getTransaction().rollback();
             this.entityManager.close();
@@ -43,7 +42,6 @@ public class VendedorDAO implements DAO<Vendedor> {
                 vendedorUP = this.entityManager.merge(vendedor);
             }
             this.entityManager.getTransaction().commit();
-            this.entityManager.close();
         } catch (Exception e) {
             this.entityManager.getTransaction().rollback();
             this.entityManager.close();
@@ -59,7 +57,6 @@ public class VendedorDAO implements DAO<Vendedor> {
             this.entityManager.getTransaction().begin();
             this.entityManager.remove(vendedorUP);
             this.entityManager.getTransaction().commit();
-            this.entityManager.close();
         } catch (Exception e) {
             this.entityManager.getTransaction().rollback();
             this.entityManager.close();
@@ -76,5 +73,9 @@ public class VendedorDAO implements DAO<Vendedor> {
             throw new RuntimeException("Erro ao buscar por id" + e);
         }
         return vendedorUP;
+    }
+
+    public void close() {
+        entityManager.close();
     }
 }

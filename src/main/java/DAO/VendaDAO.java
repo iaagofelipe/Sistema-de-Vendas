@@ -17,7 +17,6 @@ public class VendaDAO implements DAO<Venda> {
             this.entityManager.getTransaction().begin();
             this.entityManager.persist(venda);
             this.entityManager.getTransaction().commit();
-            this.entityManager.close();
         } catch (Exception e) {
             this.entityManager.getTransaction().rollback();
             this.entityManager.close();
@@ -42,7 +41,6 @@ public class VendaDAO implements DAO<Venda> {
                 vendaUP = this.entityManager.merge(venda);
             }
             this.entityManager.getTransaction().commit();
-            this.entityManager.close();
         } catch (Exception e) {
             this.entityManager.getTransaction().rollback();
             this.entityManager.close();
@@ -58,7 +56,6 @@ public class VendaDAO implements DAO<Venda> {
             this.entityManager.getTransaction().begin();
             this.entityManager.remove(vendaUP);
             this.entityManager.getTransaction().commit();
-            this.entityManager.close();
         } catch (Exception e) {
             this.entityManager.getTransaction().rollback();
             this.entityManager.close();
@@ -75,5 +72,9 @@ public class VendaDAO implements DAO<Venda> {
             throw new RuntimeException("Erro ao buscar por id" + e);
         }
         return vendaUP;
+    }
+
+    public void close() {
+        entityManager.close();
     }
 }

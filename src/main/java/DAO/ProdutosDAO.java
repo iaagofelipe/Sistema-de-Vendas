@@ -18,7 +18,6 @@ public class ProdutosDAO implements DAO<Produtos>{
             this.entityManager.getTransaction().begin();
             this.entityManager.persist(produtos);
             this.entityManager.getTransaction().commit();
-            this.entityManager.close();
         } catch (Exception e) {
             this.entityManager.getTransaction().rollback();
             this.entityManager.close();
@@ -43,7 +42,6 @@ public class ProdutosDAO implements DAO<Produtos>{
                 produtosUP = this.entityManager.merge(produtos);
             }
             this.entityManager.getTransaction().commit();
-            this.entityManager.close();
         } catch (Exception e) {
             this.entityManager.getTransaction().rollback();
             this.entityManager.close();
@@ -59,7 +57,6 @@ public class ProdutosDAO implements DAO<Produtos>{
             this.entityManager.getTransaction().begin();
             this.entityManager.remove(produtosUP);
             this.entityManager.getTransaction().commit();
-            this.entityManager.close();
         } catch (Exception e) {
             this.entityManager.getTransaction().rollback();
             this.entityManager.close();
@@ -76,5 +73,9 @@ public class ProdutosDAO implements DAO<Produtos>{
             throw new RuntimeException("Erro ao buscar por id" + e);
         }
         return produtosUP;
+    }
+
+    public void close() {
+        entityManager.close();
     }
 }
