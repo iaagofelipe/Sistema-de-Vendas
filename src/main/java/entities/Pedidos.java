@@ -8,9 +8,23 @@ public class Pedidos {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long ID;
-
-	@ManyToOne
+	
+	private int quantidade;
+	
+	@ManyToOne(cascade = CascadeType.MERGE)
 	private Produtos produtos;
+	
+	public int getQuantidade() {
+		return quantidade;
+	}
+
+	public void setQuantidade(int quantidade) {
+		this.quantidade = quantidade;
+	}
+
+	public void setID(Long iD) {
+		ID = iD;
+	}
 
 	public Produtos getProdutos() {
 		return produtos;

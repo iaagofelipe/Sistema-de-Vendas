@@ -2,6 +2,7 @@ package entities;
 
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "vendas")
@@ -11,11 +12,11 @@ public class Venda {
     private Long ID;
     private Double precoTotal;
     
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.LAZY)  
     private Cliente cliente;
     
-    @ManyToOne
-    private Vendedor vendedor;
+    @ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.LAZY)  
+    private Vendedor vendedores;
 
     public Venda() {
     }
@@ -41,19 +42,21 @@ public class Venda {
         this.precoTotal = precoTotal;
     }
 
-    public Cliente getCliente() {
-        return cliente;
-    }
+	public Cliente getCliente() {
+		return cliente;
+	}
 
-    public void setCliente(Cliente cliente) {
-        this.cliente = cliente;
-    }
+	public void setCliente(Cliente cliente) {
+		this.cliente = cliente;
+	}
 
-    public Vendedor getVendedor() {
-        return vendedor;
-    }
+	public Vendedor getVendedores() {
+		return vendedores;
+	}
 
-    public void setVendedor(Vendedor vendedores) {
-        this.vendedor = vendedores;
-    }
+	public void setVendedores(Vendedor vendedores) {
+		this.vendedores = vendedores;
+	}
+    
+
 }

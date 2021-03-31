@@ -1,19 +1,19 @@
 package teste;
 
-import DAO.PedidoDAO;
-import DAO.VendedorDAO;
+import java.util.Scanner;
+
 import business.ClienteBusiness;
 import business.PedidoBusiness;
 import business.ProdutoBusiness;
+import business.VendaBusiness;
 import business.VendedorBusiness;
-
-import java.util.Scanner;
 
 public class SistemaTeste {
 	public static ClienteBusiness clienteBusiness = new ClienteBusiness();
 	public static ProdutoBusiness produtoBusiness = new ProdutoBusiness();
 	public static VendedorBusiness vendedorBusiness = new VendedorBusiness();
 	public static PedidoBusiness pedidoBusiness = new PedidoBusiness();
+	public static VendaBusiness vendaBusiness = new VendaBusiness();
 	public static Scanner scan  = new Scanner(System.in);
 
 	public static void main(String[] args) {
@@ -27,7 +27,6 @@ public class SistemaTeste {
 			System.out.println("2- Produtos");
 			System.out.println("3- Clientes");
 			System.out.println("4- Vendedores");
-			System.out.println("5- Pedidos");
 			System.out.println("0- Sair");
 			System.out.println("Digite o módulo que deseja acessar: ");
 			op = scan.nextInt();
@@ -37,7 +36,7 @@ public class SistemaTeste {
 					closeConnectionAndExit();
 					break;
 				case 1:
-					System.out.println("Não implementado YET!!!!!!!!");
+					vendaBusiness.menu();
 					break;
 				case 2:
 					produtoBusiness.menu();
@@ -47,9 +46,6 @@ public class SistemaTeste {
 					break;
 				case 4:
 					vendedorBusiness.menu();
-					break;
-				case 5:
-					pedidoBusiness.menu();
 					break;
 				default:
 					System.out.println("Opção Inválida");
