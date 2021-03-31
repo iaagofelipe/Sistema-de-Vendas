@@ -9,7 +9,7 @@ import conexao.ConnectionFactory;
 import entities.Venda;
 import entities.VendasPedidos;
 
-public class Vendas_PedidosDAO implements DAO<VendasPedidos>{
+public class VendasPedidosDAO implements DAO<VendasPedidos>{
 	private final EntityManager entityManager = new ConnectionFactory().getConnection();
 	public VendasPedidos vendaPedidoUP;
 	
