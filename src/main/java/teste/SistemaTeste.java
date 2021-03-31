@@ -59,6 +59,7 @@ public class SistemaTeste {
 		vendedorBusiness.closeDAOConnection();
 		clienteBusiness.closeDAOConnection();
 		pedidoBusiness.closeDAOConnection();
+		vendaBusiness.closeDAOConnection();
 
 		System.exit(0);
 	}

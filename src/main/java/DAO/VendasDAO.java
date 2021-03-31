@@ -77,5 +77,7 @@ public class VendasDAO implements DAO<Venda>{
 		return vendaUP;
 	}
 
-
+	public void close() {
+		entityManager.close();
+	}
 }

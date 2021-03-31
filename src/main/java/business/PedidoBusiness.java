@@ -3,7 +3,7 @@ package business;
 import DAO.PedidoDAO;
 import DAO.ProdutosDAO;
 import DAO.VendasDAO;
-import DAO.Vendas_PedidosDAO;
+import DAO.VendasPedidosDAO;
 import entities.Pedidos;
 import entities.Produtos;
 import entities.Venda;
@@ -18,7 +18,7 @@ public class PedidoBusiness {
 	public static PedidoDAO pedidoDAO = new PedidoDAO();
 	public static ProdutosDAO produtosDAO = new ProdutosDAO();
 	public static VendasDAO vendasDAO = new VendasDAO();
-	public static Vendas_PedidosDAO vendasPedidoDAO = new Vendas_PedidosDAO();
+	public static VendasPedidosDAO vendasPedidoDAO = new VendasPedidosDAO();
 
 	public void fazerPedido(Long idVenda) {
 		imprimirProdutosDisponiveis();

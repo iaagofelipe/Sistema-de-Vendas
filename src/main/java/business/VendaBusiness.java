@@ -1,9 +1,8 @@
 package business;
 
 import DAO.ClienteDAO;
-import DAO.PedidoDAO;
 import DAO.VendasDAO;
-import DAO.Vendas_PedidosDAO;
+import DAO.VendasPedidosDAO;
 import DAO.VendedorDAO;
 import entities.*;
 
@@ -15,7 +14,7 @@ public class VendaBusiness implements Business{
 	public static ClienteDAO clienteDAO = new ClienteDAO();
 	public static VendedorDAO vendedorDAO = new VendedorDAO();
 	public static PedidoBusiness pedidoBusiness = new PedidoBusiness();
-	public static Vendas_PedidosDAO vendasPedidoDAO = new Vendas_PedidosDAO();
+	public static VendasPedidosDAO vendasPedidoDAO = new VendasPedidosDAO();
 
 	@Override
 	public void salvar() {
@@ -98,5 +97,12 @@ public class VendaBusiness implements Business{
 			break;
 		}
 
+	}
+
+	public void closeDAOConnection() {
+		vendaDAO.close();
+		vendasPedidoDAO.close();
+		clienteDAO.close();
+		vendedorDAO.close();
 	}
 }
