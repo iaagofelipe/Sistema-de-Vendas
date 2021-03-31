@@ -2,8 +2,12 @@ package business;
 
 import DAO.PedidoDAO;
 import DAO.ProdutosDAO;
+import DAO.VendasDAO;
+import DAO.Vendas_PedidosDAO;
 import entities.Pedidos;
 import entities.Produtos;
+import entities.Venda;
+import entities.VendasPedidos;
 
 import java.util.List;
 import java.util.Scanner;
@@ -13,22 +17,33 @@ public class PedidoBusiness {
 	public static Pedidos pedidos = new Pedidos();
 	public static PedidoDAO pedidoDAO = new PedidoDAO();
 	public static ProdutosDAO produtosDAO = new ProdutosDAO();
+	public static VendasDAO vendasDAO = new VendasDAO();
+	public static Vendas_PedidosDAO vendasPedidoDAO = new Vendas_PedidosDAO();
 
-	public void fazerPedido() {
+	public void fazerPedido(Long idVenda) {
 		imprimirProdutosDisponiveis();
 
 		System.out.println("Digite o código do produto que deseja: ");
 		Long codigoProduto = scan.nextLong();
 		Produtos produtoEscolhido = produtosDAO.findById(codigoProduto);
 		pedidos.setProdutos(produtoEscolhido);
-
+		
 		System.out.println("Digite a quantidade: ");
 		int quantidadeProduto = scan.nextInt();
-
-		if (quantidadeProduto > 0) {
-			produtoEscolhido.setQuantidade(quantidadeProduto);
+		if(quantidadeProduto > 0) {
+			pedidos.setQuantidade(quantidadeProduto);
+			Pedidos p = pedidoDAO.save(pedidos);
+			
+			Venda venda = vendasDAO.findById(idVenda);
+			
+			venda.setPrecoTotal(quantidadeProduto * produtoEscolhido.getPreco());
+			Venda v = vendasDAO.update(venda);
+			
+			VendasPedidos vendaP = new VendasPedidos();
+			vendaP.setPedidos(p);
+			vendaP.setVenda(v);
+			vendasPedidoDAO.save(vendaP);		
 		}
-		pedidoDAO.save(pedidos);
 	}
 
 	public void imprimirProdutosDisponiveis() {
@@ -85,7 +100,7 @@ public class PedidoBusiness {
 					break;
 				case 2:
 					System.out.println("Digite a quantidade: ");
-					pedidos.getProdutos().setQuantidade(scan.nextInt());
+					//pedidos.getProdutos().setQuantidade(scan.nextInt());
 					break;
 				case 3:
 					break;
@@ -112,7 +127,7 @@ public class PedidoBusiness {
 		}
 	}
 
-	public void menu() {
+	public void menu(Long id_vendedor, Long id_cliente, Long idVenda) {
 		System.out.println("Insira uma das opções abaixo:");
 		System.out.println("1- Fazer um pedido:");
 		System.out.println("2- Editar pedido");
@@ -122,7 +137,7 @@ public class PedidoBusiness {
 		int op = scan.nextInt();
 		switch (op) {
 			case 1:
-				fazerPedido();
+				fazerPedido(idVenda);
 				break;
 			case 2:
 				editarPedido();

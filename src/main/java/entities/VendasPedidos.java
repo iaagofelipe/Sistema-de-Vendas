@@ -1,6 +1,8 @@
 package entities;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -14,17 +16,21 @@ public class VendasPedidos {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long ID;
     
-    @ManyToOne
+    @ManyToOne(cascade = {CascadeType.MERGE}, fetch= FetchType.LAZY)
     private Venda venda;
     
-    @ManyToOne
+    @ManyToOne(cascade = {CascadeType.MERGE },fetch= FetchType.LAZY)
     private Pedidos pedidos;
 
     public Long getID() {
         return ID;
     }
 
-    public Venda getVenda() {
+    public void setID(Long iD) {
+		ID = iD;
+	}
+
+	public Venda getVenda() {
         return venda;
     }
 
@@ -38,5 +44,15 @@ public class VendasPedidos {
 
     public void setPedidos(Pedidos pedidos) {
         this.pedidos = pedidos;
+    }
+    
+    @Override
+    public String toString() {
+    	return "\nCódigo: "+ this.getID() +
+    			"\nCódigo do Produto:" + this.getPedidos().getProdutos().getID()+
+    			"\n Nome Produto: " + this.getPedidos().getProdutos().getNomeProduto()+
+    			"\n Vendedor:" + this.getVenda().getVendedores().getNome()+
+    			"\n Cliente: " + this.getVenda().getCliente().getNome()+
+    			"\n Preço total: " + this.getVenda().getPrecoTotal();
     }
 }

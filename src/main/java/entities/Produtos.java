@@ -13,13 +13,11 @@ public class Produtos {
     private String nomeProduto;
     private String descricaoProduto;
     private Double preco;
-    private Integer quantidade;
 
     public Produtos(Integer quantidade,String nomeProduto, String descricaoProduto, Double preco) {
         this.nomeProduto = nomeProduto;
         this.descricaoProduto = descricaoProduto;
         this.preco = preco;
-        this.quantidade = quantidade;
     }
 
     public Produtos() {
@@ -27,14 +25,6 @@ public class Produtos {
 
     public Long getID() {
         return ID;
-    }
-
-    public Integer getQuantidade() {
-        return quantidade;
-    }
-
-    public void setQuantidade(Integer quantidade) {
-        this.quantidade = quantidade;
     }
 
     public String getNomeProduto() {
